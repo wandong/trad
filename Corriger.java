@@ -1,10 +1,11 @@
-package tp1;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
@@ -12,14 +13,16 @@ public class Corriger {
 
 	/**
 	 * @param args
-	 * @throws FileNotFoundException 
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) throws IOException 
 	{
 		// TODO Auto-generated method stub
 		String nomfichier = "lc.full.hansard.5000.e";
 		Scanner scan = new Scanner(new File(nomfichier));
 		HashMap<String, Integer> t = new HashMap<String, Integer>();
+		HashMap<String,Integer> p = new HashMap();
+		
 		
 		
 		while(scan.hasNextLine())
@@ -46,8 +49,56 @@ public class Corriger {
 				}
 			}
 			
-			break;
-		}
+			
+		}//fin while
+		String nomDUfichier = "resoultat.mstat";
+		PrintWriter out = new PrintWriter(new FileWriter(nomDUfichier));
+		Set cles = t.keySet();
+		java.util.Iterator it =  cles.iterator();
+		while(it.hasNext())
+		{
+			String cle = (String) it.next();
+			int valeur = t.get(cle);
+			out.println(cle+" "+valeur);
+			
+		}// fin while ecrire
+		out.close();
+		scan.close();
+		// reconstruire les donne a paritir de fichier
+		Scanner fichier_mstat = new Scanner(new File(nomDUfichier));
+		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+		while(fichier_mstat.hasNext())
+		{
+			String [] temp = fichier_mstat.nextLine().split(" ");
+			
+			hm.put(temp[0], Integer.parseInt(temp[1]));
+			
+		}/*fin test  */
+		{//partie pour test les donne lire a partire de fichier
+			Set Cle = hm.keySet();
+			java.util.Iterator It = Cle.iterator();
+			Boolean nombre;
+			nombre = (cles.size() == Cle.size());
+			Boolean bt = true;
+			if(nombre)
+			{
+				while(it.hasNext())
+				{
+					String temp = (String) it.next();
+					if(hm.get(temp) != t.get(temp) )
+					{
+					
+						bt = false;break;
+					}
+				}
+			}
+			if(bt&&nombre)System.out.println("La reconstruction est correcte");
+			else
+			{
+				System.out.println("false ");
+			}
+			
+		}//fin test
 		
 
 	}
