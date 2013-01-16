@@ -1,5 +1,6 @@
 
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,6 +10,24 @@ import java.util.*;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+/*
+ * Dans un main , si on veut parcourir un bicorpus 
+ * 
+ * corriger pous les cooccurrences 
+ * 
+ * class compte 
+ * Hashmap<String , Integer> comptes
+ * 
+ * class Coocurrence 
+ * HashMap<String ,compte> cooc;
+ * 
+ * ==> signfi la nombre de fois deux mot apparaite dans un meme phrase
+ * 
+ * 
+ * 
+ * 
+ * */
+
 public class Corriger {
 
 	/**
@@ -17,7 +36,7 @@ public class Corriger {
 	 */
 	public static void main(String[] args) throws IOException 
 	{
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub²²²²²²
 		String nomfichier = "lc.full.hansard.5000.e";
 		Scanner scan = new Scanner(new File(nomfichier));
 		HashMap<String, Integer> t = new HashMap<String, Integer>();

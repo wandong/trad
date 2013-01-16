@@ -1,5 +1,11 @@
-// Une phrase est representer par table de string;
 
+
+// Une phrase est representer par table de string;
+/*
+ * stoker un couple de phrase 
+ * +consructeur
+ * +getteur
+ * */
 public class BiPhrase {
 	
 	String [] f;
@@ -26,6 +32,7 @@ public class BiPhrase {
 		if(type == English) return e[n];
 		return "";
 	}
+	
 	
 	/**
 	 * @param args

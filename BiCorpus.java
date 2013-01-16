@@ -1,3 +1,6 @@
+
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.ref.PhantomReference;
@@ -5,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
+/*
+ * stoke le corpus parallile
+ * */
 public class BiCorpus {
 
 	
 	BiPhrase [] Corpus;
-	
-	BiCorpus(String  nom) throws Exception
+	// autres attributs comme par exemple les noms du fichier
+	public BiCorpus(String  nom) throws Exception
 	{
 		String fichier_e,fichier_f;
 		fichier_e = nom + ".e";
